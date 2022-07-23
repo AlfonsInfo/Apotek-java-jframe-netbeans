@@ -5,12 +5,12 @@ package model;
  * @author Alfonsus Setiawan Jacub
  */
 public class Obat {
-    private String kodeObat;
-    private String namaObat;
-    private String sediaan; // Botol Syrup, Tablet , Kapsul
-    private String satuan; // dus / tablet / 1 kapsul 1 dus berapa obat
-    private float hargaJual;  // dosis obat gimana?
-    
+    private String kodeObat; // prioritas
+    private String namaObat; // prioritas
+    private String sediaan; // Botol Syrup, Tablet , Kapsul //prioritas
+    //private String satuan; // dus / tablet / 1 kapsul 1 dus berapa obat kayaknya ribet
+    private float hargaJual;  // dosis obat gimana? // prioritas  stok bagaimana ?
+    private int Stok;
 }
 // Coba buat fungsi pembelian obat biasa terlebih dahulu
 // Kaitkan dengan user ada 2 versi : member, tidak member, jika member diskon, jika tidak member , tidak diskon
