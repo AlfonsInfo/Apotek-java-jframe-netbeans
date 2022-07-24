@@ -6,6 +6,7 @@ import java.awt.Image;
 //import java.awt.Point;
 //import java.awt.Rectangle;
 import javax.swing.ImageIcon;
+import connection.DbConnection;
 
 /**
  *
@@ -13,14 +14,16 @@ import javax.swing.ImageIcon;
  */
 public class staffLoginForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Choice
-     */
+    int usernameState = 0;
+    int passwordState = 0;
+    
     public staffLoginForm() {
         initComponents();
         scaleIcon();
+        PasswordField();
+        
     }
-
+    
     public void scaleIcon()
     {
         ImageIcon icon  = new ImageIcon(getClass().getResource("/assets/Customer.png")); // alamatnya dependen atau independen
@@ -30,6 +33,11 @@ public class staffLoginForm extends javax.swing.JFrame {
         ImageIcon ScaledIcon = new ImageIcon(imgScale);
         LabelApotek.setIcon(ScaledIcon);
        
+    }
+    
+    public void PasswordField()
+    {
+        inputPassword.setEchoChar((char)0);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,7 +76,7 @@ public class staffLoginForm extends javax.swing.JFrame {
 
         AppBarPanel.setBackground(new java.awt.Color(0, 0, 153));
 
-        AppBarLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        AppBarLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         AppBarLabel.setForeground(new java.awt.Color(255, 255, 255));
         AppBarLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AppBarLabel.setText("SMART APOTEK");
@@ -89,7 +97,7 @@ public class staffLoginForm extends javax.swing.JFrame {
 
         inputUsername.setBackground(new java.awt.Color(204, 204, 255));
         inputUsername.setForeground(new java.awt.Color(0, 0, 0));
-        inputUsername.setText("NIP | Username");
+        inputUsername.setText("NIP atau Username");
         inputUsername.setToolTipText("");
         inputUsername.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inputUsername.setDoubleBuffered(true);
@@ -104,16 +112,6 @@ public class staffLoginForm extends javax.swing.JFrame {
         inputUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputUsernameActionPerformed(evt);
-            }
-        });
-        inputUsername.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                inputUsernameKeyPressed(evt);
-            }
-        });
-        inputUsername.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
-            public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
-                inputUsernameVetoableChange(evt);
             }
         });
 
@@ -132,8 +130,8 @@ public class staffLoginForm extends javax.swing.JFrame {
         inputPassword.setText("Password");
         inputPassword.setAutoscrolls(false);
         inputPassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inputPasswordMouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inputPasswordMouseEntered(evt);
             }
         });
 
@@ -211,24 +209,30 @@ public class staffLoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_inputLoginActionPerformed
 
     private void inputUsernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputUsernameMouseClicked
-        inputUsername.setText("");
+        
     }//GEN-LAST:event_inputUsernameMouseClicked
 
-    private void inputUsernameVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_inputUsernameVetoableChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputUsernameVetoableChange
-
-    private void inputUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputUsernameKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputUsernameKeyPressed
-
-    private void inputPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputPasswordMouseClicked
-        inputPassword.setText("");
-    }//GEN-LAST:event_inputPasswordMouseClicked
-
     private void inputUsernameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputUsernameMouseEntered
-        // TODO add your handling code here:
+        if(usernameState==0)
+        {
+            inputUsername.setText("");
+            usernameState++;
+        }else
+        {
+            
+        }
     }//GEN-LAST:event_inputUsernameMouseEntered
+
+    private void inputPasswordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputPasswordMouseEntered
+        if(passwordState==0)
+        {
+            inputPassword.setText("");
+            inputPassword.setEchoChar('*');
+            passwordState++;
+        }else{
+            inputPassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_inputPasswordMouseEntered
 /*
 public static boolean isMouseWithinComponent(Component c)
 {
