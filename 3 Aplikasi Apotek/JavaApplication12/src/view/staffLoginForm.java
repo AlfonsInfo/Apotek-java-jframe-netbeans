@@ -8,6 +8,10 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import connection.DbConnection;
 
+import model.AkunStaff;
+import model.Staff;
+import control.AkunStaffControl;
+
 /**
  *
  * @author Alfonsus Setiawan Jacub
@@ -16,7 +20,7 @@ public class staffLoginForm extends javax.swing.JFrame {
 
     int usernameState = 0;
     int passwordState = 0;
-    
+    private AkunStaffControl akunStaffControl;
     public staffLoginForm() {
         initComponents();
         scaleIcon();
@@ -58,7 +62,7 @@ public class staffLoginForm extends javax.swing.JFrame {
         AppBarLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         inputUsername = new javax.swing.JTextField();
-        inputLogin = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         LabelApotek = new javax.swing.JLabel();
         inputPassword = new javax.swing.JPasswordField();
 
@@ -115,13 +119,13 @@ public class staffLoginForm extends javax.swing.JFrame {
             }
         });
 
-        inputLogin.setBackground(new java.awt.Color(0, 0, 153));
-        inputLogin.setForeground(new java.awt.Color(255, 255, 255));
-        inputLogin.setText("Sign in");
-        inputLogin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        inputLogin.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setBackground(new java.awt.Color(0, 0, 153));
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setText("Sign in");
+        btnLogin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputLoginActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -152,7 +156,7 @@ public class staffLoginForm extends javax.swing.JFrame {
                             .addGroup(ContainerPanelLayout.createSequentialGroup()
                                 .addGap(91, 91, 91)
                                 .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(inputLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(inputUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                                     .addComponent(inputPassword))))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -174,7 +178,7 @@ public class staffLoginForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(inputLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addComponent(LabelApotek, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(322, Short.MAX_VALUE))
@@ -201,12 +205,21 @@ public class staffLoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inputUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputUsernameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_inputUsernameActionPerformed
 
-    private void inputLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputLoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputLoginActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+      //  AkunStaff as = new AkunStaff(inputUsername.getText(), inputPassword.getText(), null);
+     AkunStaff AS = akunStaffControl.searchAkunStaff(inputUsername.getText(), inputPassword.getText());
+     if(AS == null)
+     {
+         System.out.println("Login gagal");
+     }else
+     {
+         System.out.println("Login berhasil");
+     }
+     
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     private void inputUsernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputUsernameMouseClicked
         
@@ -284,7 +297,7 @@ public static boolean isMouseWithinComponent(Component c)
     private javax.swing.JPanel AppBarPanel;
     private javax.swing.JPanel ContainerPanel;
     private javax.swing.JLabel LabelApotek;
-    private javax.swing.JButton inputLogin;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JPasswordField inputPassword;
     private javax.swing.JTextField inputUsername;
     private javax.swing.JLabel jLabel1;

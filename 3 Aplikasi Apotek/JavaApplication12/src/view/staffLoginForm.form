@@ -93,7 +93,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="inputLogin" max="32767" attributes="0"/>
+                                      <Component id="btnLogin" max="32767" attributes="0"/>
                                       <Component id="inputUsername" alignment="0" pref="206" max="32767" attributes="0"/>
                                       <Component id="inputPassword" max="32767" attributes="0"/>
                                   </Group>
@@ -123,7 +123,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="inputPassword" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="inputLogin" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="btnLogin" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                   <Component id="LabelApotek" min="-2" pref="274" max="-2" attributes="0"/>
                   <EmptySpace pref="322" max="32767" attributes="0"/>
@@ -195,7 +195,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputUsernameActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="inputLogin">
+        <Component class="javax.swing.JButton" name="btnLogin">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="0" red="0" type="rgb"/>
@@ -211,7 +211,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputLoginActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="LabelApotek">
