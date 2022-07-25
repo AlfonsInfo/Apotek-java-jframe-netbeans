@@ -16,9 +16,9 @@ public class AkunStaffControl {
     
     public AkunStaff searchAkunStaff(String username, String password)
     {
-        AkunStaff as = null;
-        as = asDAO.searchAkunStaff(username, password);
-        return as;
+        AkunStaff akunstaff = null;
+        akunstaff = asDAO.searchAkunStaff(username, password);
+        return akunstaff;
     }
     
 }

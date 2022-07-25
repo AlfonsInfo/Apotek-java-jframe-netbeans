@@ -8,14 +8,14 @@ public class AkunStaff {
     //Field
     private String username;
     private String password;
-    private Staff staff;
+ //   private Staff staff;
     
     //Constructor
-    public AkunStaff(String username, String password, Staff staff)
+    public AkunStaff(String username, String password)
     {
         this.username =  username;
         this.password = password;
-        this.staff = staff;
+   //     this.staff = staff;
     }
     
     //Method
@@ -43,7 +43,7 @@ public class AkunStaff {
     }
     
     //Getter dan Setter Staff
-    public Staff getStaff()
+ /*   public Staff getStaff()
     {
         return staff;
     }
@@ -51,6 +51,6 @@ public class AkunStaff {
     public void setStaff(Staff staff)
     {
         this.staff = staff;
-    }
+    }*/
     
 }

@@ -11,6 +11,7 @@ import connection.DbConnection;
 import model.AkunStaff;
 import model.Staff;
 import control.AkunStaffControl;
+import dao.AkunStaffDAO;
 
 /**
  *
@@ -25,6 +26,7 @@ public class staffLoginForm extends javax.swing.JFrame {
         initComponents();
         scaleIcon();
         PasswordField();
+        akunStaffControl = new AkunStaffControl();
         
     }
     
@@ -209,16 +211,8 @@ public class staffLoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_inputUsernameActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-      //  AkunStaff as = new AkunStaff(inputUsername.getText(), inputPassword.getText(), null);
-     AkunStaff AS = akunStaffControl.searchAkunStaff(inputUsername.getText(), inputPassword.getText());
-     if(AS == null)
-     {
-         System.out.println("Login gagal");
-     }else
-     {
-         System.out.println("Login berhasil");
-     }
-     
+        AkunStaff as = akunStaffControl.searchAkunStaff(inputUsername.getText(),inputPassword.getText());
+        System.out.println(as.getUsername());
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void inputUsernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputUsernameMouseClicked
