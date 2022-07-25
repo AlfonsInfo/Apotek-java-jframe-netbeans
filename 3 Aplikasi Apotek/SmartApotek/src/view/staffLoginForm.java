@@ -2,9 +2,7 @@ package view;
 
 import java.awt.Component;
 import java.awt.Image;
-//import java.awt.MouseInfo;
-//import java.awt.Point;
-//import java.awt.Rectangle;
+
 import javax.swing.ImageIcon;
 import connection.DbConnection;
 
@@ -103,7 +101,7 @@ public class staffLoginForm extends javax.swing.JFrame {
 
         inputUsername.setBackground(new java.awt.Color(204, 204, 255));
         inputUsername.setForeground(new java.awt.Color(0, 0, 0));
-        inputUsername.setText("NIP atau Username");
+        inputUsername.setText("Username");
         inputUsername.setToolTipText("");
         inputUsername.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inputUsername.setDoubleBuffered(true);
