@@ -1,36 +1,41 @@
-package view;
+package view.viewCustomer;
 
 import java.awt.Component;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import connection.DbConnection;
 
-import model.AkunStaff;
-import model.Staff;
-import control.AkunStaffControl;
-import dao.AkunStaffDAO;
+import model.karyawan.AkunKaryawan;
+import model.karyawan.Karyawan;
+import control.AkunCustomerControl;
+import dao.AkunCustomerDAO;
 import java.awt.Color;
+import model.AkunCustomer;
 
 
 /**
  *
  * @author Alfonsus Setiawan Jacub
  */
-public class staffLoginForm extends javax.swing.JFrame {
+public class CustomerSignUpForm extends javax.swing.JFrame {
     
     //Field
     int usernameState = 0;
     int passwordState = 0;
-    private AkunStaffControl akunStaffControl;
+    int EmailState=0;
+    int alamatState=0;
+    private AkunCustomerControl akunCustomerControl;
     
     //Konstruktor
-    public staffLoginForm() {
+    public CustomerSignUpForm() {
         initComponents();
         scaleIcon("/assets/Customer.png", LabelApotek);
         PasswordField();
-        akunStaffControl = new AkunStaffControl();
+        akunCustomerControl = new AkunCustomerControl();
         
     }
+    
+    
     
     //Method untuk melakukan pengskalaan pada label icon. agar bisa digunakan kembali pada ssetlainnya, digunakan parameter input assets dan javax.swing.Jlabel
     public void scaleIcon(String assets, javax.swing.JLabel c) 
@@ -69,10 +74,13 @@ public class staffLoginForm extends javax.swing.JFrame {
         AppBarLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         inputUsername = new javax.swing.JTextField();
-        btnLogin = new javax.swing.JButton();
+        btnBackToLogin = new javax.swing.JButton();
         LabelApotek = new javax.swing.JLabel();
         inputPassword = new javax.swing.JPasswordField();
         Message = new javax.swing.JLabel();
+        btnSignup = new javax.swing.JButton();
+        inputEmail = new javax.swing.JTextField();
+        inputAlamat = new javax.swing.JTextField();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -87,8 +95,9 @@ public class staffLoginForm extends javax.swing.JFrame {
 
         ContainerPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        AppBarPanel.setBackground(new java.awt.Color(0, 0, 153));
+        AppBarPanel.setBackground(new java.awt.Color(51, 153, 0));
 
+        AppBarLabel.setBackground(new java.awt.Color(153, 204, 0));
         AppBarLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         AppBarLabel.setForeground(new java.awt.Color(255, 255, 255));
         AppBarLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -98,7 +107,7 @@ public class staffLoginForm extends javax.swing.JFrame {
         AppBarPanel.setLayout(AppBarPanelLayout);
         AppBarPanelLayout.setHorizontalGroup(
             AppBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(AppBarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+            .addComponent(AppBarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         AppBarPanelLayout.setVerticalGroup(
             AppBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +117,7 @@ public class staffLoginForm extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 153));
         jLabel1.setToolTipText("");
 
-        inputUsername.setBackground(new java.awt.Color(204, 204, 255));
+        inputUsername.setBackground(new java.awt.Color(153, 255, 153));
         inputUsername.setForeground(new java.awt.Color(0, 0, 0));
         inputUsername.setText("Username");
         inputUsername.setToolTipText("");
@@ -128,17 +137,17 @@ public class staffLoginForm extends javax.swing.JFrame {
             }
         });
 
-        btnLogin.setBackground(new java.awt.Color(0, 0, 153));
-        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogin.setText("Sign in");
-        btnLogin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+        btnBackToLogin.setBackground(new java.awt.Color(0, 153, 0));
+        btnBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnBackToLogin.setText("Back To Login Menu");
+        btnBackToLogin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnBackToLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
+                btnBackToLoginActionPerformed(evt);
             }
         });
 
-        inputPassword.setBackground(new java.awt.Color(204, 204, 255));
+        inputPassword.setBackground(new java.awt.Color(204, 255, 204));
         inputPassword.setForeground(new java.awt.Color(51, 51, 51));
         inputPassword.setText("Password");
         inputPassword.setAutoscrolls(false);
@@ -150,6 +159,56 @@ public class staffLoginForm extends javax.swing.JFrame {
 
         Message.setForeground(new java.awt.Color(204, 0, 51));
 
+        btnSignup.setBackground(new java.awt.Color(255, 255, 255));
+        btnSignup.setForeground(new java.awt.Color(0, 153, 0));
+        btnSignup.setText("Sign  up");
+        btnSignup.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnSignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignupActionPerformed(evt);
+            }
+        });
+
+        inputEmail.setBackground(new java.awt.Color(153, 255, 153));
+        inputEmail.setForeground(new java.awt.Color(0, 0, 0));
+        inputEmail.setText("email");
+        inputEmail.setToolTipText("");
+        inputEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        inputEmail.setDoubleBuffered(true);
+        inputEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inputEmailMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inputEmailMouseEntered(evt);
+            }
+        });
+        inputEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputEmailActionPerformed(evt);
+            }
+        });
+
+        inputAlamat.setBackground(new java.awt.Color(153, 255, 153));
+        inputAlamat.setForeground(new java.awt.Color(0, 0, 0));
+        inputAlamat.setText("alamat");
+        inputAlamat.setToolTipText("");
+        inputAlamat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        inputAlamat.setDoubleBuffered(true);
+        inputAlamat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inputAlamatMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inputAlamatMouseEntered(evt);
+            }
+        });
+        inputAlamat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputAlamatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ContainerPanelLayout = new javax.swing.GroupLayout(ContainerPanel);
         ContainerPanel.setLayout(ContainerPanelLayout);
         ContainerPanelLayout.setHorizontalGroup(
@@ -160,42 +219,55 @@ public class staffLoginForm extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(AppBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(ContainerPanelLayout.createSequentialGroup()
-                        .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ContainerPanelLayout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(ContainerPanelLayout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Message, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(inputUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                                    .addComponent(inputPassword))))
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContainerPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(LabelApotek, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
+            .addGroup(ContainerPanelLayout.createSequentialGroup()
+                .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ContainerPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ContainerPanelLayout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBackToLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSignup, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(inputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inputUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         ContainerPanelLayout.setVerticalGroup(
             ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ContainerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(AppBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
+                .addGap(38, 38, 38)
                 .addComponent(inputUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(inputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSignup, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBackToLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addComponent(LabelApotek, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(338, Short.MAX_VALUE))
+                .addContainerGap(315, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,26 +294,11 @@ public class staffLoginForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_inputUsernameActionPerformed
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-      //  System.out.println(inputUsername.getText());
-       // System.out.println(inputPassword.getText());
-        AkunStaff as = akunStaffControl.searchAkunStaff(inputUsername.getText(),inputPassword.getText());
-        if(as==null)
-        {
-            System.out.println("Data tidak ditemukan"); // print di console
-            Message.setText("Username atau Password Salah !!");
-        }else
-        {          
-            System.out.println("Data akun ditemukan");
-            Message.setForeground(Color.GREEN); // Ubah warna font dari defualt
-            Message.setText("Login Berhasil !! ");
-            //Delay 
-            //Pindah form 
-            staffForm dv = new staffForm();
+    private void btnBackToLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToLoginActionPerformed
+            CustomerLoginForm dv = new CustomerLoginForm();
             this.dispose();
             dv.setVisible(true);
-        }
-    }//GEN-LAST:event_btnLoginActionPerformed
+    }//GEN-LAST:event_btnBackToLoginActionPerformed
 
     private void inputUsernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputUsernameMouseClicked
         
@@ -268,6 +325,51 @@ public class staffLoginForm extends javax.swing.JFrame {
             inputPassword.setEchoChar('*');
         }
     }//GEN-LAST:event_inputPasswordMouseEntered
+
+    private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
+        AkunCustomer ac = new AkunCustomer(inputUsername.getText(),inputPassword.getText(),inputEmail.getText(),inputAlamat.getText());
+        akunCustomerControl.insertAkunCustomer(ac);
+        Message.setText("Daftar Akun Berhasil !!");
+            Message.setForeground(Color.GREEN); // Ubah warna font dari defualt
+            Message.setText("Login Berhasil !! ");
+    }//GEN-LAST:event_btnSignupActionPerformed
+
+    private void inputEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputEmailMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputEmailMouseClicked
+
+    private void inputEmailMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputEmailMouseEntered
+        if(EmailState==0)
+        {
+            inputEmail.setText("");
+            EmailState++;
+        }else
+        {
+            
+        }    }//GEN-LAST:event_inputEmailMouseEntered
+
+    private void inputEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputEmailActionPerformed
+
+    private void inputAlamatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputAlamatMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputAlamatMouseClicked
+
+    private void inputAlamatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputAlamatMouseEntered
+     if(alamatState==0)
+        {
+            inputAlamat.setText("");
+            alamatState++;
+        }else
+        {
+            
+        }  
+    }//GEN-LAST:event_inputAlamatMouseEntered
+
+    private void inputAlamatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputAlamatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputAlamatActionPerformed
 /*
 public static boolean isMouseWithinComponent(Component c)
 {
@@ -293,14 +395,42 @@ public static boolean isMouseWithinComponent(Component c)
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(staffLoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerSignUpForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(staffLoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerSignUpForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(staffLoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerSignUpForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(staffLoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerSignUpForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -309,7 +439,7 @@ public static boolean isMouseWithinComponent(Component c)
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new staffLoginForm().setVisible(true);
+                new CustomerSignUpForm().setVisible(true);
             }
         });
     }
@@ -320,7 +450,10 @@ public static boolean isMouseWithinComponent(Component c)
     private javax.swing.JPanel ContainerPanel;
     private javax.swing.JLabel LabelApotek;
     private javax.swing.JLabel Message;
-    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnBackToLogin;
+    private javax.swing.JButton btnSignup;
+    private javax.swing.JTextField inputAlamat;
+    private javax.swing.JTextField inputEmail;
     private javax.swing.JPasswordField inputPassword;
     private javax.swing.JTextField inputUsername;
     private javax.swing.JLabel jLabel1;

@@ -1,11 +1,12 @@
-package view;
+package view.viewKaryawan;
 
+import view.viewKaryawan.KaryawanForm;
 import control.DepartemenControl;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import model.Departemen;
-import table.TableDepartemen;
+import table.TableFormKaryawan.TableDepartemen;
 
 public class DepartemenForm extends javax.swing.JFrame {
 
@@ -14,8 +15,7 @@ public class DepartemenForm extends javax.swing.JFrame {
     List<Departemen> listDepartemen;
     int selectedId = 0;
     
-    boolean statusInputID;
-    boolean statusInputNama;
+
     
     public DepartemenForm() {
         initComponents();
@@ -208,6 +208,11 @@ public class DepartemenForm extends javax.swing.JFrame {
         BackBtn.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         BackBtn.setForeground(new java.awt.Color(0, 0, 204));
         BackBtn.setText("<<<");
+        BackBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BackBtnMouseClicked(evt);
+            }
+        });
         BackBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackBtnActionPerformed(evt);
@@ -260,16 +265,14 @@ public class DepartemenForm extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ContainerPanelLayout.createSequentialGroup()
-                        .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67))
+                    .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(ContainerPanelLayout.createSequentialGroup()
                         .addComponent(idLabel)
                         .addGap(18, 18, 18)
                         .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(NamaLabel)
-                            .addComponent(InputNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)))
+                            .addComponent(InputNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(33, 33, 33)
                 .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(SaveBtn)
@@ -399,6 +402,13 @@ public class DepartemenForm extends javax.swing.JFrame {
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BackBtnActionPerformed
+
+    private void BackBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackBtnMouseClicked
+              // Choice dv = new Choice();
+        KaryawanForm dv = new KaryawanForm();
+        this.dispose();
+        dv.setVisible(true);
+    }//GEN-LAST:event_BackBtnMouseClicked
 
     /**
      * @param args the command line arguments

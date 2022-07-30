@@ -1,6 +1,5 @@
     /*
- Karyawan adalah superclass dari Manajer dan Staff
- Manajer dan Staff menyusun departemen
+
  divisi : 
  */
 package model.karyawan;
@@ -10,14 +9,19 @@ import model.Departemen;
  *
  * @author A412DA
  */
-public abstract class Karyawan {
+
+/*
+ Karyawan adalah superclass dari Manajer dan Staff
+ Manajer dan Staff menyusun departemen
+*/
+public class Karyawan {
     protected String idKaryawan;
     protected String namaKaryawan;
-    protected float gaji;
+    protected double gaji;
     protected AkunKaryawan akunKaryawan;
     protected Departemen departemen;
 
-    public Karyawan(String idKaryawan, String namaKaryawan, float gaji, AkunKaryawan akunKaryawan, Departemen departemen) {
+    public Karyawan(String idKaryawan, String namaKaryawan, double gaji, AkunKaryawan akunKaryawan, Departemen departemen) {
         this.idKaryawan = idKaryawan;
         this.namaKaryawan = namaKaryawan;
         this.gaji = gaji;
@@ -46,11 +50,12 @@ public abstract class Karyawan {
     }
     //Getter dan Setter gaji
 
-    public float getGaji() {
-        return gaji;
+    public double getGaji() {
+       // return String.valueOf(gaji);
+       return gaji;
     }
 
-    public void setGaji(float gaji) {
+    public void setGaji(double gaji) {
         this.gaji = gaji;
     }
         

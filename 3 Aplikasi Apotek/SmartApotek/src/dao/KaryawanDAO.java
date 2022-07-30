@@ -15,16 +15,16 @@ public class KaryawanDAO {
     
     
     //create  == insert == membuat / menambahkan data ke database
-    public void insertKaryawan(Karyawan k)
+    public void  insertKaryawan(Karyawan k)
     {
-        con = dbcon.makeConnection();
-        String sql = "INSERT INTO Karyawan (idKaryawan, namaKaryawan, gaji, idDepartemen,username ) "
-                + "VALUES ('"+ k.getIdKaryawan() + "', '"
-                + k.getNamaKaryawan() + "', "
-                + k.getGaji() + ",' "
+       con = dbcon.makeConnection();
+        String sql = " INSERT INTO Karyawan (idKaryawan, namaKaryawan, gaji, idDepartemen,username ) "
+                + " VALUES ('"+ k.getIdKaryawan() + "', '"
+                + k.getNamaKaryawan() + "','"
+                + k.getGaji() + "',' "
                 + k.getDepartemen().getIdDepartemen()+"','"
                 + k.getAkunKaryawan().getUsername() + " ')";
-        System.out.println("Adding Karyawan");        
+        System.out.println("Adding Table Karyawan");        
         
         try{
             Statement statement = con.createStatement();
@@ -35,7 +35,7 @@ public class KaryawanDAO {
             System.out.println("Error Adding Karyawan");
             System.out.println(e);
         }
-        dbcon.closeConnection();     
+       dbcon.closeConnection();     
     }
     
     //read == show == Mengambil data dari database
@@ -106,7 +106,7 @@ public class KaryawanDAO {
     {
         con = dbcon.makeConnection();
         
-        String sql = "Delete From Karyawan WHERE id_karyawan = '"+id+"'";
+        String sql = "Delete From Karyawan WHERE idKaryawan = '"+id+"'";
         System.out.println("Deleting Karyawan");
         try{
             Statement statement = con.createStatement();

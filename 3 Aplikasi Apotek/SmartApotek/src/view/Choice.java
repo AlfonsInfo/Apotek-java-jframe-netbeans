@@ -1,5 +1,8 @@
 package view;
 
+import view.viewKaryawan.KaryawanLoginForm;
+import view.viewCustomer.CustomerLoginForm;
+
 /**
  *
  * @author Alfonsus Setiawan Jacub
@@ -28,6 +31,8 @@ public class Choice extends javax.swing.JFrame {
         ContainerPanel = new javax.swing.JPanel();
         AppBarPanel = new javax.swing.JPanel();
         AppBarLabel = new javax.swing.JLabel();
+        CustomerBtn = new javax.swing.JButton();
+        StafBtn = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -37,10 +42,11 @@ public class Choice extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ContainerPanel.setBackground(new java.awt.Color(255, 255, 255));
+        ContainerPanel.setBackground(new java.awt.Color(204, 204, 255));
 
         AppBarPanel.setBackground(new java.awt.Color(0, 0, 153));
 
+        AppBarLabel.setBackground(new java.awt.Color(204, 204, 255));
         AppBarLabel.setForeground(new java.awt.Color(255, 255, 255));
         AppBarLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AppBarLabel.setText("SMART APOTEK");
@@ -56,6 +62,26 @@ public class Choice extends javax.swing.JFrame {
             .addComponent(AppBarLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
         );
 
+        CustomerBtn.setBackground(new java.awt.Color(255, 255, 255));
+        CustomerBtn.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        CustomerBtn.setForeground(new java.awt.Color(0, 0, 204));
+        CustomerBtn.setText("Customer");
+        CustomerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CustomerBtnActionPerformed(evt);
+            }
+        });
+
+        StafBtn.setBackground(new java.awt.Color(0, 0, 255));
+        StafBtn.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        StafBtn.setForeground(new java.awt.Color(255, 255, 255));
+        StafBtn.setText("Staff");
+        StafBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StafBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ContainerPanelLayout = new javax.swing.GroupLayout(ContainerPanel);
         ContainerPanel.setLayout(ContainerPanelLayout);
         ContainerPanelLayout.setHorizontalGroup(
@@ -64,13 +90,23 @@ public class Choice extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(AppBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContainerPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(StafBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(85, 85, 85))
         );
         ContainerPanelLayout.setVerticalGroup(
             ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ContainerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(AppBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(663, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addComponent(CustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(StafBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(257, 257, 257))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -92,6 +128,18 @@ public class Choice extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void StafBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StafBtnActionPerformed
+        KaryawanLoginForm dv = new KaryawanLoginForm();
+        this.dispose();
+        dv.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_StafBtnActionPerformed
+
+    private void CustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerBtnActionPerformed
+        CustomerLoginForm dv = new CustomerLoginForm();
+        this.dispose();
+        dv.setVisible(true);
+    }//GEN-LAST:event_CustomerBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,6 +180,8 @@ public class Choice extends javax.swing.JFrame {
     private javax.swing.JLabel AppBarLabel;
     private javax.swing.JPanel AppBarPanel;
     private javax.swing.JPanel ContainerPanel;
+    private javax.swing.JButton CustomerBtn;
+    private javax.swing.JButton StafBtn;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

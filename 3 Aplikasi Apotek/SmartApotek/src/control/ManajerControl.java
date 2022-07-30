@@ -1,22 +1,23 @@
 package control;
 
+
 import dao.ManajerDAO;
 import java.util.List;
 import model.karyawan.*;
-import table.TableManajer;
+import table.TableFormKaryawan.TableManajer;
 
 public class ManajerControl {
     private ManajerDAO kdao = new ManajerDAO();
     
     public void insertManajer(Manajer m)
     {
-        kdao.insertManajer(m);// bisa aja kalo di DAO ada 2 insertKaryawan dan memiliki parameter pembeda
+        kdao.insertManajer(m);
     }
     
     
     public TableManajer showManajer(String query)
     {
-        List<Manajer> dataManajer = kdao.showManajer(query);
+        List<Manajer> dataManajer = kdao.showManajer("query");
         TableManajer tableManajer = new TableManajer(dataManajer);
         
         return tableManajer;
@@ -31,4 +32,5 @@ public class ManajerControl {
     {
         kdao.deleteManajer(id);
     }
+    
 }

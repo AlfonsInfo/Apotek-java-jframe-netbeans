@@ -37,6 +37,16 @@ public class Obat {
         System.out.println("Konstruktor 3");
     }
     
+    public Obat(int stokKurang, String kodeObat, String namaObat, String sediaan, String khasiat, float harga) {
+        this.kodeObat = kodeObat;
+        this.namaObat = namaObat;
+        this.sediaan = sediaan;
+        this.khasiat = khasiat;
+        this.hargaJual = harga;// asumsi : keuntungan obat diambil 20% harga modal // menggunakan .f agar float
+        this.stok = stok - stokKurang;
+        System.out.println("Konstruktor 4");
+    }
+    
     //Method
 
     //Kode Obat

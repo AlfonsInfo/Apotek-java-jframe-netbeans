@@ -1,12 +1,19 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package table;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableModel;
 import model.Obat;
-public class TableStokObat extends AbstractTableModel{
+
+public class TableObatForCustomer extends AbstractTableModel{
+
     private List<Obat> list;
     
-    public TableStokObat()
+    public TableObatForCustomer(List<Obat> list)
     {
         this.list = list;
     }
@@ -18,7 +25,7 @@ public class TableStokObat extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 7;//
+        return 5;
     }
 
     @Override
@@ -27,19 +34,17 @@ public class TableStokObat extends AbstractTableModel{
             switch(columIndex)
             {
                 case 0:
-                    return list.get(rowIndex).getKodeObat();
-                case 1:
                     return list.get(rowIndex).getNamaObat();
-                case 2:
+                case 1:
                     return list.get(rowIndex).getSediaan();
-                case 3:
+                case 2:
                     return list.get(rowIndex).getKhasiat();
-                case 4:
+                case 3:
                     return list.get(rowIndex).getHargaJual();
-                case 5:
-                    return list.get(rowIndex).getModal();
-                case 6:
+                case 4:
                     return list.get(rowIndex).getStok();
+                case 5:
+                    return list.get(rowIndex).getKodeObat();
                 default:
                     return null;
             }
@@ -50,22 +55,20 @@ public class TableStokObat extends AbstractTableModel{
     {
         switch(column)
         {
-            case 0:
-                return "Kode Obat";
-            case 1:    
+            case 0:    
                 return "Nama Obat";
-            case 2:    
+            case 1:    
                 return "Sediaan";
-            case 3:    
+            case 2:    
                 return "Khasiat";
-            case 4:    
-                return "Harga Jual";
-            case 5:    
-                return "Modal";
-            case 6:   
+            case 3:    
+                return "Harga ";
+            case 4:   
                 return "Stok";
+        //    case 5:
+          //      return  "Kode Obat";
             default:
                 return null;
         }
-    }
+    }    
 }

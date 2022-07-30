@@ -18,7 +18,7 @@ public class DbConnection {
         System.out.println("Opening Database...");
         try{
             CON = DriverManager.getConnection(URL+PATH);
-            System.out.println("Success!");
+            System.out.println("Success (Opening Database)!");
         }catch(Exception e)
         {
             System.out.println("Error Opening Database...");
@@ -32,7 +32,7 @@ public class DbConnection {
         System.out.println("Closing Database...");
         try{
             CON.close();
-            System.out.println("Success");
+            System.out.println("Success (Closing Database)!!");
         }catch(Exception e)
         {
             System.out.println("Error Closing Database...");
